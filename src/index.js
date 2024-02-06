@@ -3,7 +3,12 @@ const app = express();
 const { logConfig } = require("./config");
 
 const { ServerConfig } = require("../src/config");
+const apiRoutes = require("./routes");
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.use("/api", apiRoutes);
 
 app.listen(ServerConfig.PORT, () => {
   console.log("listening on port " + ServerConfig.PORT);
