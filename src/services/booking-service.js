@@ -1,6 +1,6 @@
 const { StatusCodes } = require("http-status-codes");
 const db = require("../models");
-const BookingRepository = require("../repositories");
+
 const axios = require("axios");
 const AppError = require("../utils/errors/app-errors");
 
@@ -23,8 +23,6 @@ async function createBooking(data) {
         resolve(true);
       }
     );
-
-    
   });
 }
 
