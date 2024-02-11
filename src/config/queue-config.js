@@ -5,11 +5,10 @@ let channel, connection;
 async function connectQueue() {
   try {
     connection = await amqplib.connect("amqp://localhost");
-    console.log("Connected to RabbitMQ");
+
     channel = await connection.createChannel();
-    console.log("Channel created");
+
     await channel.assertQueue("noti-queue");
-    console.log("Queue asserted");
   } catch (error) {
     console.log(error);
   }
