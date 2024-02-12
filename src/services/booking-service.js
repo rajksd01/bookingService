@@ -71,7 +71,7 @@ async function makePayment(data) {
       { status: BOOKED },
       transaction
     );
-   
+
     await Queue.sendData({
       recepientEmail: "rajksd9@gmail.com",
       subject: "Flight booked",
@@ -123,8 +123,18 @@ async function cancelOldBookings() {
     console.log(error);
   }
 }
+
+async function getBookings() {
+  try {
+    const bookings = await bookingRepository.getAll();
+    return bookings;
+  } catch (error) {
+    throw error;
+  }
+}
 module.exports = {
   createBooking,
   makePayment,
   cancelOldBookings,
+  getBookings,
 };

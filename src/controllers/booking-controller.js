@@ -45,7 +45,20 @@ async function makePayment(req, res) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(ErrorResponse);
   }
 }
+
+async function getBookings(req, res) {
+  try {
+    const bookings = await BookingServices.getBookings();
+    SuccessResponse.data = bookings;
+    return res.status(StatusCodes.OK).json(SuccessResponse);
+  } catch (error) {
+    console.error(error);
+    ErrorResponse.error = error;
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(ErrorResponse);
+  }
+}
 module.exports = {
   createBooking,
   makePayment,
+  getBookings,
 };
