@@ -1,7 +1,7 @@
 const amqplib = require("amqplib");
 
-let channel, connection;
-
+let connection;
+let channel;
 async function connectQueue() {
   try {
     connection = await amqplib.connect("amqp://localhost");
@@ -15,8 +15,9 @@ async function connectQueue() {
 }
 
 async function sendData(data) {
+  console.log(data);
   try {
-    if (!channel) {
+    if (!channel || !connection) {
       console.log("Channel not initialized. Trying to reconnect...");
       await connectQueue();
     }

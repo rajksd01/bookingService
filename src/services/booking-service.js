@@ -30,6 +30,7 @@ async function createBooking(data) {
     );
 
     await transaction.commit();
+  
     return booking;
   } catch (error) {
     await transaction.rollback();
