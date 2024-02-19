@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const { logConfig } = require("./config");
 
-const { ServerConfig } = require("../src/config");
+const { ServerConfig , Queue} = require("../src/config");
 const apiRoutes = require("./routes");
 const CRON = require("./utils/common/cron-jobs");
 app.use(express.urlencoded({ extended: true }));
